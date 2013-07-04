@@ -1,0 +1,20 @@
+{
+  "name": "Xpath Finder",
+  "version": "1.0",
+  "description": "Find Elements According To Xpath In Chrome DevTools.",
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "devtools_page": "devtools.html",
+  "content_scripts": [{
+    "matches": [ "http://*/*" ],
+    "css": [ "style.css" ],
+    "js": [ "content.js" ]
+   }],
+  "permissions":  [
+    "tabs",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "manifest_version": 2
+}
