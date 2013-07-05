@@ -1,12 +1,13 @@
 var ports = {};
 
 chrome.extension.onMessage.addListener(function( request, sender, response ){
-  
+
 })
 
+//接受devtools.panel连接Port，绑定Port消息响应
 chrome.extension.onConnect.addListener(function(port) {
     if ( port.name !== "xpathFinder" ){
-      return;
+        return;
     }
 
     ports[ port.portId_ ] = port;
@@ -16,21 +17,12 @@ chrome.extension.onConnect.addListener(function(port) {
     });
 
     port.onMessage.addListener(function( msg ) {
-      debugger
-      console.log(msg);
-      if( msg.command === "findXpath" ){
-        var inspectedId = msg.tabId;
-        // chrome.tabs.executeScript( inspectedId, { file: "content.js" });
-        chrome.tabs.sendMessage(inspectedId, msg, function(response) {
-          debugger
-        });
-      }
+        if( msg.command === "findXpath" ){
+            var inspectedId = msg.tabId;
+            //传递消息给content script
+            chrome.tabs.sendMessage(inspectedId, msg, function(response) {
+
+            }); 
+        }
     });
 });
-
-// Function to send a message to all devtool.html views:
-function notifyDevtools( msg ) {
-    Object.keys(ports).forEach(function(portId_) {
-        ports[portId_].postMessage(msg);
-    });
-}
