@@ -4,7 +4,12 @@
     "description": "Find Elements According To Xpath In Chrome DevTools.", 
     "background": {
         "scripts": ["background.js"] 
-    }, 
+    },
+    "icons": { 
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png" 
+    },
     "devtools_page": "devtools.html", 
     "content_scripts": [{
         "matches": [ "http://*/*", "https://*/*" ], 
