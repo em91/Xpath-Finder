@@ -1,13 +1,13 @@
 {
     "name": "Xpath Finder", 
-    "version": "1.1", 
+    "version": "1.2", 
     "description": "Find Elements According To Xpath In Chrome DevTools.", 
     "background": {
         "scripts": ["background.js"] 
     },
     "icons": { 
-        "16": "icon.png",
-        "48": "icon.png",
+        "16": "icon_16.png",
+        "48": "icon_48.png",
         "128": "icon.png" 
     },
     "devtools_page": "devtools.html", 
