@@ -1,7 +1,29 @@
 var ports = {};
 
 chrome.extension.onMessage.addListener(function( request, sender, response ){
+    var xpath = request.xpath,
+        count = request.count,
+        host = request.host;
 
+    //过滤XPATH加入历史
+    var storage = localStorage[ host ] || ( localStorage[ host ] = "{}" );
+    var storageJson = JSON.parse( storage );
+    var xpathObj = storageJson[ xpath ] || ( storageJson[ xpath ] = 0 );
+    if( !xpathObj ){
+        storageJson[ xpath ] = 1;
+    } else {
+        storageJson[ xpath ]++;
+    }
+
+    localStorage[ host ] = JSON.stringify( storageJson );
+
+    //搜素完毕后需要刷新历史
+    for( var id in ports ){
+        ports[ id ].postMessage({
+            history: JSON.parse( localStorage[ host ] || "{}" ),
+            count: count
+        })
+    }
 })
 
 //接受devtools.panel连接Port，绑定Port消息响应
@@ -23,6 +45,15 @@ chrome.extension.onConnect.addListener(function(port) {
             chrome.tabs.sendMessage(inspectedId, msg, function(response) {
 
             }); 
+        } else if ( msg.command === "getHistory" ){
+            port.postMessage({
+                history: JSON.parse( localStorage[ msg.host ] || "{}" )
+            })
+        } else if( msg.command === "clearHistory" ){
+            delete localStorage[ msg.host ];
+            port.postMessage({
+                history: JSON.parse( localStorage[ msg.host ] || "{}" )
+            })
         }
     });
 });
