@@ -36,10 +36,12 @@ chrome.devtools.panels.create("Xpath Finder", "FontPicker.png", "xpath.html", fu
                 inputArea.value = target.innerHTML;
                 searchBtn.click();
             } else if ( target.id == "js-clearHistory" ){
-                port.postMessage( {
-                    command: "clearHistory",
-                    host: "webmail.mail.163.com"
-                });
+                chrome.devtools.inspectedWindow.eval( "location.host", function( host ){
+                    port.postMessage( {
+                        command: "clearHistory",
+                        host: host
+                    });
+                })
             }
         }
 
@@ -65,11 +67,13 @@ chrome.devtools.panels.create("Xpath Finder", "FontPicker.png", "xpath.html", fu
                 document.getElementById( "js-result" ).innerHTML = "no results found."
             }
         }
-
-        port.postMessage( {
-            command: "getHistory",
-            host: "webmail.mail.163.com"
-        });
+        
+        chrome.devtools.inspectedWindow.eval( "location.host", function( host ){
+            port.postMessage( {
+                command: "getHistory",
+                host: host
+            });
+        })
 
         if( data.length > 0 ){
             win.renderResults( data );
