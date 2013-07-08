@@ -8,6 +8,7 @@
 	body{
 		font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
 		padding: 10px 15px;
+		height: 100%;
 	}
 
 	header{
@@ -35,6 +36,29 @@
 		padding: 2px 5px;
 	}
 
+	#js-search{
+		float: left;
+		padding-right: 20px;
+	}
+
+	#js-history{
+		overflow-x: hidden;
+		overflow-y: scroll;
+		max-width: calc(100% - 600px);
+		float: left;
+		padding: 20px 20px;
+		min-width: 200px;
+		/*max-height: calc(100% - 100px);*/
+		/*border-left: 1px dashed #eee;*/
+	}
+
+	#js-history strong{
+		font-size:14px;
+	}
+
+	#js-history a{
+		color: #64a22d !important;
+	}
 	</style>
 </head>
 <body class="typo">
@@ -42,12 +66,22 @@
 		<strong>Xpath Finder</strong>
 		<span>Help you find elements matching specified xpath.</span>
 	</header>
-	<div id="input">
-		<input type="text" name="xpath" id="xpath">
-		<button name="search" id="search" onclick="sendMessage()">Filter</button>
-	</div>
-	<ul id="js-result">
-		
-	</ul>
+	<section class="clearfix">
+		<div id="js-search">
+			<div id="input">
+				<input type="text" name="xpath" id="xpath">
+				<button name="search" id="search" onclick="sendMessage()">Filter</button>
+			</div>
+			<p id="js-result">
+				
+			</p>
+		</div>
+		<div id="js-history">
+			<strong title="click to refilter">History</strong>
+			<a href="javascript:void(0)" id="js-clearHistory">[ Clear ]</a>
+			<ul>
+			</ul>		
+		</div>
+	</section>
 </body>
 </html>

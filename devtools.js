@@ -4,7 +4,7 @@ chrome.devtools.panels.create("Xpath Finder", "FontPicker.png", "xpath.html", fu
     var data = [];
     var port = chrome.extension.connect( { name: "xpathFinder" } );
     port.onMessage.addListener(function( msg ) {
-        if (_window) {
+        if ( _window ) {
             _window.renderResults( msg );
         } else {
             data.push(msg);
@@ -16,9 +16,11 @@ chrome.devtools.panels.create("Xpath Finder", "FontPicker.png", "xpath.html", fu
     panel.onShown.addListener(function tmp( win ) {
         panel.onShown.removeListener( tmp ); // Run once only
      
+        _window = win;
         var document = win.document, 
             inputArea = document.getElementById( "xpath" ),
-            searchBtn = document.getElementById( "search" );
+            searchBtn = document.getElementById( "search" ),
+            historyArea = document.getElementById( "js-history" );
 
         searchBtn.onclick = function(){
             port.postMessage( {
@@ -26,6 +28,51 @@ chrome.devtools.panels.create("Xpath Finder", "FontPicker.png", "xpath.html", fu
                 xpath: inputArea.value, 
                 tabId: chrome.devtools.inspectedWindow.tabId 
             });
+        }
+
+        historyArea.onclick = function( event ){
+            var target = event.target;
+            if( target.tagName === "A" && target.id != "js-clearHistory"){
+                inputArea.value = target.innerHTML;
+                searchBtn.click();
+            } else if ( target.id == "js-clearHistory" ){
+                port.postMessage( {
+                    command: "clearHistory",
+                    host: "webmail.mail.163.com"
+                });
+            }
+        }
+
+
+        win.renderResults = function( msg ){
+            xpaths = msg.history;
+            var history = document.getElementById( "js-history" ).getElementsByTagName( "ul" )[0];
+            history.innerHTML = "";
+
+            //重新渲染查询历史
+            for( var xpath in xpaths ){
+                history.innerHTML = "<li><a href='javascript:void(0)'>" + xpath + "</a></li>" + history.innerHTML;
+            }
+
+            if( !history.innerHTML ){
+                history.innerHTML = "<span>No filter history.</span>";
+            }
+
+            //如果有结果返回，也渲染到UI
+            if( msg.count ){
+                document.getElementById( "js-result" ).innerHTML = msg.count + " results found."
+            } else {
+                document.getElementById( "js-result" ).innerHTML = "no results found."
+            }
+        }
+
+        port.postMessage( {
+            command: "getHistory",
+            host: "webmail.mail.163.com"
+        });
+
+        if( data.length > 0 ){
+            win.renderResults( data );
         }
     });
 });
