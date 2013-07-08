@@ -23,6 +23,12 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
             var element = results.snapshotItem(i);
             element.className += " chromeXpathFinder";
         }
+
+        chrome.extension.sendMessage({
+            xpath: request.xpath,
+            count: results.snapshotLength,
+            host: location.host
+        })
     }catch( exp ){
         
     }
