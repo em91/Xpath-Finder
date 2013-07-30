@@ -1,6 +1,6 @@
 {
     "name": "Xpath Finder", 
-    "version": "1.3", 
+    "version": "1.4", 
     "description": "Find Elements According To Xpath In Chrome DevTools.", 
     "background": {
         "scripts": ["background.js"] 

@@ -5,7 +5,7 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
     var previousElements = document.getElementsByClassName( "chromeXpathFinder" );
     for( var l = previousElements.length, i = l; i; i-- ){
         try{
-            previousElements[i - 1].className = previousElements[i - 1].className.replace("chromeXpathFinder", "");
+            previousElements[i - 1].className = previousElements[i - 1].className.replace(" chromeXpathFinder", "");
         }catch( exp ){
 
         }
