@@ -1,25 +1,26 @@
 {
-    "name": "Xpath Finder", 
+    "name": "__MSG_extName__", 
     "version": "1.4", 
-    "description": "Find Elements According To Xpath In Chrome DevTools.", 
+    "description": "__MSG_extDesc__", 
     "background": {
         "scripts": ["background.js"] 
     },
     "icons": { 
-        "16": "icon_16.png",
-        "48": "icon_48.png",
-        "128": "icon.png" 
+        "16": "icons/16.png",
+        "48": "icons/48.png",
+        "128": "icons/128.png" 
     },
     "devtools_page": "devtools.html", 
     "content_scripts": [{
         "matches": [ "http://*/*", "https://*/*" ], 
-        "css": [ "style.css" ], 
-        "js": [ "content.js" ] 
+        "css": [ "content/style.css" ], 
+        "js": [ "content/content.js" ] 
     }], 
     "permissions":  [
         "tabs", 
         "http://*/*", 
         "https://*/*"
     ], 
-    "manifest_version": 2 
+    "manifest_version": 2,
+    "default_locale": "en_US"
 }

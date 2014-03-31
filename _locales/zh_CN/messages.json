@@ -1,0 +1,24 @@
+{
+	"extName": {
+		"message": "Xpath Finder - xpath查找助手",
+		"description": ""
+	},
+
+	"extDesc": {
+		"message": "帮助你在chrome devtools里查找Xpath匹配元素。",
+		"description": ""
+	},
+
+	"noresult": {
+		"message": "没有找到匹配的节点。"
+	},
+
+	"nohistory": {
+		"message": ""
+	},
+
+	"resultfound": {
+		"message": "查询到 {0} 个匹配的节点。"
+	}
+
+}

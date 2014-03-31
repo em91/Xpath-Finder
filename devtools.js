@@ -1,4 +1,6 @@
-chrome.devtools.panels.create("Xpath Finder", "FontPicker.png", "xpath.html", function(panel) {
+String.prototype.format = function (){if(arguments.length==0){return this}var a=arguments;return this.replace(/\{(\d+)\}/g,function(b,c){if(a[c]===undefined){return"{"+c+"}"}return a[c]})} ;
+
+chrome.devtools.panels.create("Xpath Finder", "FontPicker.png", "i18n/" + chrome.i18n.getMessage( "@@ui_locale" ) + "/xpath.html", function(panel) {
     var _window; // Going to hold the reference to panel.html's `window`
 
     var data = [];
@@ -57,22 +59,19 @@ chrome.devtools.panels.create("Xpath Finder", "FontPicker.png", "xpath.html", fu
             }
 
             if( !history.innerHTML ){
-                history.innerHTML = "<span>No filter history.</span>";
+                history.innerHTML = "<span>" + chrome.i18n.getMessage( 'nohistory' ) + "</span>";
             }
 
             //如果有结果返回，也渲染到UI
             if( msg.count ){
-                document.getElementById( "js-result" ).innerHTML = msg.count + " results found."
+                document.getElementById( "js-result" ).innerHTML = chrome.i18n.getMessage( 'resultfound' ).format( msg.count );
             } else {
-                document.getElementById( "js-result" ).innerHTML = "no results found."
+                document.getElementById( "js-result" ).innerHTML = chrome.i18n.getMessage( 'noresult' );
             }
         }
         
         chrome.devtools.inspectedWindow.eval( "location.host", function( host ){
-            port.postMessage( {
-                command: "getHistory",
-                host: host
-            });
+            port.postMessage( { command: "getHistory",  host: host } );
         })
 
         if( data.length > 0 ){

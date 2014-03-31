@@ -1,5 +1,15 @@
 var ports = {};
 
+chrome.runtime.onInstalled.addListener(function(details){
+    if( details.reason == "install" ){
+        var url = chrome.runtime.getURL( 'help/index.html' );
+        chrome.tabs.create({ url: url, active: true });
+    } else if( details.reason == "update" ) {
+        var thisVersion = chrome.runtime.getManifest().version;
+        console.log("Updated from " + details.previousVersion + " to " + thisVersion + "!");
+    }
+});
+
 chrome.extension.onMessage.addListener(function( request, sender, response ){
     var xpath = request.xpath,
         count = request.count,
