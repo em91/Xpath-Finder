@@ -1,5 +1,17 @@
 var ports = {};
 
+chrome.runtime.onInstalled.addListener(function(details){
+    if( details.reason == "install" ){
+        var url = chrome.runtime.getURL( "i18n/" + chrome.i18n.getMessage( "@@ui_locale" ) + "/intro.html" );
+        chrome.tabs.create({ url: url, active: true });
+        new Image().src = 'http://em91.me/s.gif?p=xpathfinder&a=install&r=' + new Date().getTime();
+    } else if( details.reason == "update" ) {
+        var thisVersion = chrome.runtime.getManifest().version;
+        // console.log("Updated from " + details.previousVersion + " to " + thisVersion + "!");
+        new Image().src = 'http://em91.me/s.gif?p=xpathfinder&a=upgrade&from=' + details.previousVersion + '&to=' + thisVersion + '&r=' + new Date().getTime();
+    }
+});
+
 chrome.extension.onMessage.addListener(function( request, sender, response ){
     var xpath = request.xpath,
         count = request.count,

@@ -1,0 +1,23 @@
+{
+	"extName": {
+		"message": "Xpath Finder",
+		"description": ""
+	},
+
+	"extDesc": {
+		"message": "Find Elements According To Xpath In Chrome DevTools.",
+		"description": ""
+	},
+
+	"noresult": {
+		"message": "No results found."
+	},
+
+	"nohistory": {
+		"message": "No filter history."
+	},
+
+	"resultfound": {
+		"message": "{0} results found."
+	}
+}

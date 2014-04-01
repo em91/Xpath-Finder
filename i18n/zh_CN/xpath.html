@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Xpath Finder</title>
+	<style>
+	body{ font-family: Verdana,Geneva,Arial,Helvetica,sans-serif; padding: 10px 15px; height: 100%; }
+	header{ border-bottom: 1px dashed #ccc; }
+	header strong{ font-size: 18px; }
+	header span{ font-size: 12px; margin-left: 8px; }
+	button{ padding: 2px 5px; }
+
+	.section-search > div { padding: 20px 0px; }
+	.section-search > div input{ width: 70%; }
+
+	.section-search{ float: left; width: 65%; }
+	.section-history{ width: calc(35% - 40px); float: left; padding: 20px 20px; }
+	.section-history strong{ font-size:14px; }
+	.section-history a{ color: #64a22d !important; font-size:14px; }
+	</style>
+	<script src="../../panel.js"></script>
+</head>
+<body class="typo">
+	<header>
+		<strong>Xpath Finder</strong>
+		<span>帮助快速你找到匹配Xpath的DOM节点。</span>
+	</header>
+	<section class="clearfix">
+		<div id="js-search" class="section-search">
+			<div>
+				<input type="text" name="xpath" id="xpath">
+				<button name="search" id="js-searchBtn">查找</button>
+			</div>
+			<p id="js-result"> </p>
+		</div>
+		<div id="js-history" class="section-history">
+			<strong>历史记录</strong>
+			<a href="javascript:void(0)" id="js-clearHistory">[清空]</a>
+			<ul> </ul>
+		</div>
+	</section>
+</body>
+</html>
