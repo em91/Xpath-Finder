@@ -45,6 +45,8 @@ function onSearchBtnClick(){
         xpath: xpathInput.value, 
         tabId: chrome.devtools.inspectedWindow.tabId 
     });
+
+    new Image().src = 'http://em91.me/s.gif?p=xpathfinder&a=search&r=' + new Date().getTime();
 }
 
 
@@ -59,6 +61,7 @@ function onHistoryClick( event ){
     if( target.tagName === "A" && target.id != "js-clearHistory"){
         xpathInput.value = target.innerHTML;
         searchBtn.click();
+        new Image().src = 'http://em91.me/s.gif?p=xpathfinder&a=history&r=' + new Date().getTime();
     } else if ( target.id == "js-clearHistory" ){
         chrome.devtools.inspectedWindow.eval( "location.host", function( host ){
             port.postMessage( {
