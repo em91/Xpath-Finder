@@ -1,0 +1,9 @@
+{
+    "name": "Xpath-Finder",
+    "version": "1.5.0",
+    "devDependencies": {
+        "grunt": "~0.4.4",
+        "grunt-crx": "0.3.3",
+        "grunt-contrib-compress": "latest"
+    }
+}
