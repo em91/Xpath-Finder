@@ -127,6 +127,3 @@ onload = function(){
 	init();
 	bind();
 };
-
-onerror = function(){
-};

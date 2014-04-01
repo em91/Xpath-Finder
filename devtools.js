@@ -12,10 +12,9 @@ chrome.devtools.panels.create("Xpath Finder", "FontPicker.png", "i18n/" + chrome
     });
 
     //panel显示出来之后绑定事件
-    //@todo 貌似在html里的JS都不会执行，只能在这里绑定事件
     panel.onShown.addListener(function tmp( win ) {
-        panel.onShown.removeListener( tmp ); // Run once only
-        
+        panel.onShown.removeListener( tmp );
+
         _window = win;
         _window.port = port;
         
