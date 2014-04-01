@@ -8,36 +8,35 @@
 	header{ border-bottom: 1px dashed #ccc; }
 	header strong{ font-size: 18px; }
 	header span{ font-size: 12px; margin-left: 8px; }
-	div#input{ padding: 20px 0px; }
-	div#input input{ width: 500px; }
 	button{ padding: 2px 5px; }
 
-	#js-search{ float: left; padding-right: 20px; }
-	#js-history{ overflow-x: hidden; overflow-y: scroll; max-width: calc(100% - 600px); float: left; padding: 20px 20px; min-width: 200px; }
-	#js-history strong{ font-size:14px; }
-	#js-history a{ color: #64a22d !important; }
+	.section-search > div { padding: 20px 0px; }
+	.section-search > div input{ width: 70%; }
+
+	.section-search{ float: left; width: 65%; }
+	.section-history{ width: calc(35% - 40px); float: left; padding: 20px 20px; }
+	.section-history strong{ font-size:14px; }
+	.section-history a{ color: #64a22d !important; }
 	</style>
+	<script src="../../panel.js"></script>
 </head>
-<body class="typo">
+<body>
 	<header>
 		<strong>Xpath Finder</strong>
 		<span>Help you find elements matching specified xpath.</span>
 	</header>
 	<section class="clearfix">
-		<div id="js-search">
-			<div id="input">
+		<div id="js-search" class="section-search">
+			<div>
 				<input type="text" name="xpath" id="xpath">
-				<button name="search" id="search" onclick="sendMessage()">Filter</button>
+				<button name="search" id="js-searchBtn">Filter</button>
 			</div>
-			<p id="js-result">
-				
-			</p>
+			<p id="js-result"> </p>
 		</div>
-		<div id="js-history">
-			<strong title="click to refilter">History</strong>
-			<a href="javascript:void(0)" id="js-clearHistory">[ Clear ]</a>
-			<ul>
-			</ul>		
+		<div id="js-history" class="section-history">
+			<strong>History</strong>
+			<a href="javascript:void(0)" id="js-clearHistory">[Clear]</a>
+			<ul> </ul>
 		</div>
 	</section>
 </body>
