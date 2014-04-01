@@ -1,11 +1,14 @@
-Xpath Finder
---
+## Xpath Finder
+
+帮助你快速查找匹配XPATH的元素。
+
+[Chrome应用商店下载](https://chrome.google.com/webstore/detail/xpath-finder/ijaobnmmgonppmablhldddpfmgpklbfh)
+
+## 开发阶段
+
+<pre><code>grunt</code></pre>
 
 
-An Extension For Google Chrome which helps you to find elements match your xpath. 
+## 打包发布
 
-
-It marks the matching elements with highlighted outline and background as follows.
-
-
-* [Download Link](https://chrome.google.com/webstore/detail/xpath-finder/ijaobnmmgonppmablhldddpfmgpklbfh)
+<pre><code>grunt package</code></pre>
