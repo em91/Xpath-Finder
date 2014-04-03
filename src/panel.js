@@ -24,7 +24,7 @@ function init(){
 	secResultUl = $( '#js-results' );
 	searchBtn = $( '#js-searchBtn' );
 	clearBtn = $( '#js-clearHistory' );
-	xpathInput = $( 'input[name=xpath]' )
+	xpathInput = $( 'input[name=xpath]' );
 }
 
 
@@ -37,6 +37,7 @@ function bind(){
 	secHistory.addEventListener( 'click', onHistoryClick );
 	secResultUl.addEventListener( 'click', onResultClick );
 	secResultUl.addEventListener( 'mouseover', onResultMouseOver );
+	xpathInput.addEventListener('keypress', onXpathInputKeyPress);
 }
 
 /**
@@ -113,6 +114,17 @@ function onHistoryClick( event ){
             });
         })
     }	
+}
+
+/**
+ * Xpath 输入框keypress事件监听器，主要用于监听enter按键
+ * @param  {Event} event 事件对象
+ * @return {void}
+ */
+function onXpathInputKeyPress(event){
+	if(event.which === 13){
+		onSearchBtnClick();
+	}
 }
 
 
