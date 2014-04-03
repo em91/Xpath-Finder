@@ -1,4 +1,11 @@
 .chromeXpathFinder{
-	outline: 2px solid red !important;
-	background: #B1CC14;
+	/*outline: 2px solid red !important;*/
+	outline: 2px dashed #FF0000 !important
+	/*background: #B1CC14;*/
+}
+
+.chromeXpathFinderHover{
+	/*outline: 2px solid black !important;*/
+	/*background: #B1CC14;*/
+	outline: 3px dashed blue !important
 }

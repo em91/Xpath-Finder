@@ -15,6 +15,7 @@ chrome.runtime.onInstalled.addListener(function(details){
 chrome.extension.onMessage.addListener(function( request, sender, response ){
     var xpath = request.xpath,
         count = request.count,
+        elements = request.elements,
         host = request.host;
 
     //过滤XPATH加入历史
@@ -33,7 +34,8 @@ chrome.extension.onMessage.addListener(function( request, sender, response ){
     for( var id in ports ){
         ports[ id ].postMessage({
             history: JSON.parse( localStorage[ host ] || "{}" ),
-            count: count
+            count: count,
+            elements: elements
         })
     }
 })
@@ -66,6 +68,12 @@ chrome.extension.onConnect.addListener(function(port) {
             port.postMessage({
                 history: JSON.parse( localStorage[ msg.host ] || "{}" )
             })
+        } else if ( msg.command === "locateElement" ) {
+            var inspectedId = msg.tabId;
+            //传递消息给content script
+            chrome.tabs.sendMessage(inspectedId, msg, function(response) {
+
+            }); 
         }
     });
 });
