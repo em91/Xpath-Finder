@@ -5,6 +5,13 @@
 	<title>Xpath Finder</title>
 	<style>
 	body{ font-family: Verdana,Geneva,Arial,Helvetica,sans-serif; padding: 10px 15px; height: 100%; }
+	ul, ol{ list-style: none outside none; font-size: 14px; margin: 10px 0; padding: 5px 0;}
+	a{ text-decoration: none; color: #0c5ea3;}
+	
+	.clearfix:before, .clearfix:after { content: ""; display: table; }
+	.clearfix:after { clear: both }
+	.clearfix { zoom: 1 }
+
 	header{ border-bottom: 1px dashed #ccc; }
 	header strong{ font-size: 18px; }
 	header span{ font-size: 12px; margin-left: 8px; }
@@ -17,6 +24,14 @@
 	.section-history{ width: calc(35% - 40px); float: left; padding: 20px 20px; }
 	.section-history strong{ font-size:14px; }
 	.section-history a{ color: #64a22d !important; font-size:14px; }
+	
+	.section-results {}
+	.section-results li{ padding: 8px 10px; background: #eee; font-size: 12px; position: relative;}
+	.section-results li:nth-child(2n) { background: #fff; }
+	.section-results li a { float: left; max-width: calc(100% - 80px);}
+
+	p.count{ font-size: 14px; padding: 0 10px;}
+	.inspect{ position: absolute; right: 10px; color: #1155cc; cursor: pointer; }
 	</style>
 	<script src="../../panel.js"></script>
 </head>
@@ -31,7 +46,8 @@
 				<input type="text" name="xpath" id="xpath">
 				<button name="search" id="js-searchBtn">Filter</button>
 			</div>
-			<p id="js-result"> </p>
+			<p id="js-result" class="count"> </p>
+			<ul class="section-results" id="js-results"></ul>
 		</div>
 		<div id="js-history" class="section-history">
 			<strong>History</strong>
