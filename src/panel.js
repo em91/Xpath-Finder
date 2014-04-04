@@ -73,6 +73,7 @@ function onResultClick( event ){
 	   				hoverElement.className = hoverElement.className.replace( /chromeXpathFinderHover/, "" ).trim();\
 	   				var inspected = document.querySelector( ".chromeXpathFinder' + id + '" );\
 	   				inspected.className += " chromeXpathFinderHover";\
+	   				inspected.scrollIntoView();\
 	   			}, 300)\
 	   		} catch ( e ) { }'
 	   	);

@@ -1,6 +1,6 @@
 {
     "name": "__MSG_extName__", 
-    "version": "1.5.1", 
+    "version": "1.6.0", 
     "description": "__MSG_extDesc__", 
     "background": {
         "scripts": ["background.js"] 

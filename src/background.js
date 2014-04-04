@@ -55,6 +55,24 @@ chrome.extension.onConnect.addListener(function(port) {
     port.onMessage.addListener(function( msg ) {
         if( msg.command === "findXpath" ){
             var inspectedId = msg.tabId;
+
+            if( !localStorage[ 'count' ] ) {
+                try{
+                    var count = 0;
+                    for( var host in localStorage ) {
+                        var obj = JSON.parse( localStorage[ host ] );
+                        for( var xpath in obj ) {
+                            count += obj[ xpath ];
+                        }
+                    }
+                    localStorage[ 'count' ] = count;
+                } catch ( e ) {
+                    localStorage[ 'count' ] = 1;
+                }
+            } else {
+                localStorage[ 'count' ]++;
+            }
+
             //传递消息给content script
             chrome.tabs.sendMessage(inspectedId, msg, function(response) {
 
