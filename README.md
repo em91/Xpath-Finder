@@ -1,8 +1,6 @@
 ## Xpath Finder
 
-![image](https://david-dm.org/em91/xpath-finder.png) 
-
-![image](https://david-dm.org/em91/xpath-finder/dev-status.png)
+![image](https://david-dm.org/em91/xpath-finder.png)   ![image](https://david-dm.org/em91/xpath-finder/dev-status.png)
 
 
 帮助你快速查找匹配XPATH的元素。 
@@ -26,4 +24,5 @@
 
 ## 发布记录
 
+- 1.6.0 增加匹配结果列表；增加inspect功能；增加反馈入口
 - 1.5.1 国际化处理，支持中文和英文；
